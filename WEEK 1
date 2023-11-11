@@ -1,0 +1,141 @@
+/*#include<iostream>
+using namespace std;
+
+int main(){
+	float score;
+	cout<<"Enter your score: ";
+	cin>>score;
+	if(score<=40){ 
+	 cout<<"Your grade is E";
+	}
+    else if (score<=55){
+    	cout<< "Your grade is D"; 	
+    }
+    else if (score<=60){
+    cout<<"Your grade is C";
+}
+    else if ( score <=65){
+    	cout << "Your Grade is BC";
+    }
+    else if ( score <=75){
+    	cout<<"Your grade is B";
+    }
+    else if (score <=86){
+    	cout<<"Your grade is AB";
+    }
+    else {
+    	cout << "Your grade is A";
+    }
+    return 0;
+}*/
+
+/*#include <iostream>
+using namespace std;
+
+int main (){
+	string gender;
+	int age;
+	cout<<"What is your gender?";
+	cin>> gender;
+	cout<<"How old are you?";
+	cin>>age;
+	if(gender=="p"){
+		if (age>20){
+			cout<<"you are an old girl";
+		}
+		else{
+			cout<<"You are still a teenager";
+		}
+		}
+		else if (gender=="L"){
+			if (age>20){
+			cout<<"you are an old boy";
+		}
+		else{
+			cout<<"You are still a teenager";
+}
+}
+return 0;
+}*/
+
+
+/*#include<iostream>
+#include<math.h>
+
+using namespace std;
+int main(){
+	float c,r,f,k;
+	int p; 
+	
+	cout<<"1. Celsius\n2. Reamur\n3. Farenheit \n4. Kelvin\nMasukkan Pilihan : ";
+	cin>>p;
+	
+	if (p == 1){
+		cout<<"Masukkan Nilai Suhu : ";
+		cin>>c;
+	}else if(p == 2){
+		cout<<"Masukkan Nilai Suhu : ";
+		cin>>r;
+		c = 5*r/4;
+	}else if(p == 3){
+		cout<<"Masukkan Nilai Suhu : ";
+		cin>>f;
+		c = (5/9)*(f-32); 
+	}else if(p == 4){
+		cout<<"Masukkan Nilai Suhu : ";
+		cin>>k;
+		c = k-273;
+	}
+	r = 4*c/5;
+	f = (9*c/5)+32;
+	k = c+237;
+	cout<<"Suhu Celcius		: "<<c<<endl;
+	cout<<"Suhu Reamur		: "<<r<<endl;
+	cout<<"Suhu Ferenheit   : "<<f<<endl;
+	cout<<"Suhu Kelvin		: "<<k<<endl;
+}*/
+
+#include<iostream>
+using namespace std;
+int main(){
+	float c,r,f,k;
+	int n; 
+	cout << "1.Celcius\n 2.Fahrenheit\n 3. Reamur\n 4.Kelvin\n";
+	cin >>n;
+	if (n==1){
+		cout << "masukan c= ";
+		cin>>c;
+	c=c;
+	r = 4*c/5;
+	f = (9*c/5)+32;
+	k = c+237;	
+	}
+	else if(n==2){
+		cout << "masukan f= ";
+		cin>>f;
+	f=f;
+	r=(f-32)*(4/9);
+	c=(f-32)*(5/9);
+	k=(f*(5/9)-32*(5/9))+237;
+	}
+	else if(n==3){
+		cout << "masukan R= ";
+		cin>>r;
+	r=r;
+	f=((9/5)*r*5/4)+32;
+	c=r*(5/4);
+	k=r*(5/4)+237;
+	}
+	else if(n==4){
+	k=k;
+	f=9/5*(k-237)+32;
+	c=k-237;
+	r=(4/5)*(k-237);
+	}
+	
+	cout<<"Suhu Celcius		: "<<c<<endl;
+	cout<<"Suhu Reamur		: "<<r<<endl;
+	cout<<"Suhu Ferenheit   : "<<f<<endl;
+	cout<<"Suhu Kelvin		: "<<k<<endl;
+}
+
