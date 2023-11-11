@@ -12,7 +12,7 @@ int main()
     int j,k,awal,lagi,lagi2;
     float DATA_X1[100][2],DATA_Y[100][1],transposex[2][100],transposez[3][100],xtx[2][2],xty[2][1],detxtx,adj[2][2],inversxtx[2][2],b0b1[2][1],fits[100];
     char filenameIN[20],filenameIN2[20];
-    float data1, data2,Dt_list[100][2];
+    float data1, data2,MEANResi1,STDevResi1,Dt_list[100][2],X2[100][1],Resi1[100][1],DATA_X2[100][3],ztz[3][3],detztz,adjz[3][3],inversztz[3][3];
     string sign[100],sign2[100],string3[100];
 	int N,i=0;
 	double totalx=0,totaly=0,ratax,ratay,varx=0,vary=0,kor=0,stx,sty,rxy,b1,b0;
@@ -173,10 +173,94 @@ int main()
 	}
 	cout<<endl;
 	cout<<"Results"<<endl;
+	
+	cout<<endl;
+	for(int i=0;i<10;i++){
+		X2[i][1]=pow(DATA_X1[i][1],2);
+	}
+	
+	for(int i=0;i<10;i++){
+		Resi1[i][1]=DATA_Y[i][0]-fits[i];
+	}
+	
+	for(int i=0;i<10;i++){
+		DATA_X2[i][0]=1;
+		DATA_X2[i][1]=DATA_X1[i][1];
+		DATA_X2[i][2]=X2[i][1];
+	}
+	    cout<<endl<<endl<<"matriks Z:"<<endl;
+    for (i=0;i<10;i++)                                                                                           
+    {
+        for(j=0;j<3;j++)
+        {
+            cout<<DATA_X2[i][j]<<"\t";
+        } cout<<endl;
+    }
+    
+        cout<<endl<<endl<<"matriks y:"<<endl;
+  for (i=0;i<n;i++)                                                                                             
+    {
+        for(j=0;j<1;j++)
+        {
+            cout<<DATA_Y[i][j]<<"\t";
+        } cout<<endl;
+    } cout<<endl;
+    
+           for(i=0;i<n;i++)                                                                                           
+    {
+        for(j=0;j<3;j++)
+        {
+            transposez[j][i]=DATA_X2[i][j];
+        }
+    }
+   
+   cout<<endl<<endl<<"transpose matriks Z:"<<endl;
+      for (i=0;i<3;i++)                                                                                      
+    {
+        for(j=0;j<10;j++)
+        {
+            cout<<transposez[i][j]<<"\t";
+        } cout<<endl;
+    } cout<<endl;
+    for(i=0;i<3;i++)                                                                                            
+    {
+        for(j=0;j<3;j++)
+        {
+            ztz[i][j]=0;
+            for(k=0;k<10;k++)
+            {
+                ztz[i][j]+=(transposez[i][k]*DATA_X2[k][j]);
+            }
+        }
+    }
+    cout<<endl<<"ztz:"<<endl;
+     for (i=0;i<3;i++)                                                                                          //output matriks x dikali transposenya//
+    {
+        for(j=0;j<3;j++)
+        {
+            cout<<ztz[i][j]<<"\t";
+        } cout<<endl;
+    } cout<<endl;
+	float sum=0;
+	for(int i=0;i<10;i++){
+		sum += Resi1[i][1];
+	}
+	float rataresi1 = sum/10;
 
-	//Cara Penulisan Tabel
-	cout<<"y \t x \t yhad1 "<<endl;
+	cout<<"y \t x \t x^2 \t yhad1 \t\t Resi1 "<<endl;
 	for(int i=0;i<n;i++){
-		cout<<DATA_Y[i][0]<<" \t"<<DATA_X1[i][1]<<"\t"<<fits[i]<<endl;
+		cout<<DATA_Y[i][0]<<" \t"<<DATA_X1[i][1]<<"\t"<<X2[i][1]<<"\t"<<fits[i]<<"\t\t"<<Resi1[i][1]<<endl;
 }
+cout<<endl;
+cout << "Model 1: Linear Model"<<endl;
+cout<<"MEANResi1 : "<<rataresi1<<endl;
+cout<<"STDevResi1 : "<<endl;
+cout<<"SSEResi1 : "<<endl;
+cout<<"MSEResi1 : "<<endl;
+cout<<endl;
+cout<<"Model 2 : Quadratic Model "<<endl;
+cout<<"MEANResi2 : "<<endl;
+cout<<"STDevResi2 : "<<endl;
+cout<<"SSEResi2 : "<<endl;
+cout<<"MSEResi2 : "<<endl;
 }
